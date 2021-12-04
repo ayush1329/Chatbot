@@ -9,31 +9,21 @@ import Header from "../components/Header";
 import chatService from "../api/chatService";
 
 const Chatbot = () => {
-  const [messages, setMessages] = useState([
-    <BotMessage
-      key="0"
-      fetchMessage={async () => await chatService.getChatbotResponse("hi")}
-    />,
-  ]);
+  const [messages, setMessages] = useState([]);
 
   useEffect(() => {
     async function loadWelcomeMessage() {
-      const secondMsg = messages.concat(
+      setMessages([
         <BotMessage
-          key={messages.length + 1}
-          fetchMessage={async () =>
-            await chatService.getChatbotResponse("help")
-          }
-        />
-      );
-      setTimeout(() => {
-        setMessages(secondMsg);
-      }, 3000);
+          key="0"
+          fetchMessage={async () => await chatService.getChatbotResponse("hi")}
+        />,
+      ]);
     }
     loadWelcomeMessage();
   }, []);
 
-  const onSend = async (text) => {
+  const onSendMessage = async (text) => {
     const newMessages = messages.concat(
       <UserMessage key={messages.length + 1} text={text} />,
       <BotMessage
@@ -48,7 +38,7 @@ const Chatbot = () => {
     <div className="chatbot">
       <Header />
       <Messages messages={messages} />
-      <Input onSend={onSend} />
+      <Input onSend={onSendMessage} />
     </div>
   );
 };
