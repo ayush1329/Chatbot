@@ -33,7 +33,7 @@ const Chatbot = () => {
     loadWelcomeMessage();
   }, []);
 
-  const send = async (text) => {
+  const onSend = async (text) => {
     const newMessages = messages.concat(
       <UserMessage key={messages.length + 1} text={text} />,
       <BotMessage
@@ -48,7 +48,7 @@ const Chatbot = () => {
     <div className="chatbot">
       <Header />
       <Messages messages={messages} />
-      <Input onSend={send} />
+      <Input onSend={onSend} />
     </div>
   );
 };
