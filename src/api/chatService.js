@@ -1,5 +1,5 @@
-const API = {
-  GetChatbotResponse: async (message) => {
+const chatService = {
+  getChatbotResponse: async (message) => {
     return new Promise(function (resolve, reject) {
       setTimeout(function () {
         if (message === "hi") resolve("Welcome to chatbot!");
@@ -9,4 +9,4 @@ const API = {
   },
 };
 
-export default API;
+export default chatService;

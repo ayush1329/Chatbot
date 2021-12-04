@@ -1,12 +1,12 @@
 import React, { useState, useEffect } from "react";
 
-import BotMessage from "../BotMessage";
-import UserMessage from "../UserMessage";
-import Messages from "../Messages";
-import Input from "../Input";
+import BotMessage from "../components/BotMessage";
+import UserMessage from "../components/UserMessage";
+import Messages from "../components/Messages";
+import Input from "../components/Input";
 
-import Header from "../Header";
-import API from "../../api/chatApi";
+import Header from "../components/Header";
+import chatService from "../api/chatService";
 
 const Chatbot = () => {
   const [messages, setMessages] = useState([]);
@@ -16,7 +16,7 @@ const Chatbot = () => {
       setMessages([
         <BotMessage
           key="0"
-          fetchMessage={ async () => await API.GetChatbotResponse("hi") }
+          fetchMessage={ async () => await chatService.getChatbotResponse("hi") }
         />
       ]);
     }
@@ -28,7 +28,7 @@ const Chatbot = () => {
       <UserMessage key={ messages.length + 1 } text={ text } />,
       <BotMessage
         key={ messages.length + 2 }
-        fetchMessage={ async () => await API.GetChatbotResponse(text) }
+        fetchMessage={ async () => await chatService.getChatbotResponse(text) }
       />
     );
     setMessages(newMessages);
