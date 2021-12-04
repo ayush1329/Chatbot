@@ -4,10 +4,10 @@
   box-shadow: 0 12px 24px 0 rgba(0, 0, 0, 0.15);
   background: #f5f8fb;
   text-align: center;
-  display: flex;
-  flex-flow: column;
   width: 500px;
+  margin: auto;
   overflow: hidden;
+  margin-top: 5%;
 }
 
 .header {

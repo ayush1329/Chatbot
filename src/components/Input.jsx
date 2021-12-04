@@ -22,7 +22,7 @@ const Input = ({ onSend }) => {
           type="text"
           onChange={handleInputChange}
           value={text}
-          placeholder="Enter your message here"
+          placeholder="Type Message"
         />
         <button>
           <svg
