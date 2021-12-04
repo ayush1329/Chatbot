@@ -9,26 +9,36 @@ import Header from "../components/Header";
 import chatService from "../api/chatService";
 
 const Chatbot = () => {
-  const [messages, setMessages] = useState([]);
+  const [messages, setMessages] = useState([
+    <BotMessage
+      key="0"
+      fetchMessage={async () => await chatService.getChatbotResponse("hi")}
+    />,
+  ]);
 
   useEffect(() => {
     async function loadWelcomeMessage() {
-      setMessages([
+      const secondMsg = messages.concat(
         <BotMessage
-          key="0"
-          fetchMessage={ async () => await chatService.getChatbotResponse("hi") }
+          key={messages.length + 1}
+          fetchMessage={async () =>
+            await chatService.getChatbotResponse("help")
+          }
         />
-      ]);
+      );
+      setTimeout(() => {
+        setMessages(secondMsg);
+      }, 3000);
     }
     loadWelcomeMessage();
   }, []);
 
-  const send = async text => {
+  const send = async (text) => {
     const newMessages = messages.concat(
-      <UserMessage key={ messages.length + 1 } text={ text } />,
-       <BotMessage
-        key={ messages.length + 2 }
-        fetchMessage={ async () => await chatService.getChatbotResponse(text) }
+      <UserMessage key={messages.length + 1} text={text} />,
+      <BotMessage
+        key={messages.length + 2}
+        fetchMessage={async () => await chatService.getChatbotResponse(text)}
       />
     );
     setMessages(newMessages);
@@ -37,10 +47,10 @@ const Chatbot = () => {
   return (
     <div className="chatbot">
       <Header />
-      <Messages messages={ messages } />
-      <Input onSend={ send } />
+      <Messages messages={messages} />
+      <Input onSend={send} />
     </div>
   );
-}
+};
 
 export default Chatbot;

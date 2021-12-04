@@ -11,6 +11,7 @@ const chatService = {
 
 const handleRequest = (message) => {
   if (message === "hi") return "Welcome to dominoes!";
+  if (message === "help") return "How may i help you";
   else return "dominoes:- " + message;
 };
 
