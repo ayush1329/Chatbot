@@ -1,12 +1,12 @@
 import "./App.css";
 import Chatbot from "./components/Chatbot";
 
-function App() {
+const App = () => {
   return (
     <div className="App">
       <Chatbot />
     </div>
   );
-}
+};
 
 export default App;

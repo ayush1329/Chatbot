@@ -6,7 +6,7 @@ import Messages from "../Messages";
 import Input from "../Input";
 
 import Header from "../Header";
-import API from "../../api/chatBotApi";
+import API from "../../api/chatApi";
 
 const Chatbot = () => {
   const [messages, setMessages] = useState([]);
