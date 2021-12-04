@@ -26,7 +26,7 @@ const Chatbot = () => {
   const send = async text => {
     const newMessages = messages.concat(
       <UserMessage key={ messages.length + 1 } text={ text } />,
-      <BotMessage
+       <BotMessage
         key={ messages.length + 2 }
         fetchMessage={ async () => await chatService.getChatbotResponse(text) }
       />

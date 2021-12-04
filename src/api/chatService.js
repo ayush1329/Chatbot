@@ -2,11 +2,16 @@ const chatService = {
   getChatbotResponse: async (message) => {
     return new Promise(function (resolve, reject) {
       setTimeout(function () {
-        if (message === "hi") resolve("Welcome to chatbot!");
-        else resolve("echo : " + message);
+        const value = handleRequest(message);
+        resolve(value);
       }, 2000);
     });
   },
+};
+
+const handleRequest = (message) => {
+  if (message === "hi") return "Welcome to dominoes!";
+  else return "dominoes:- " + message;
 };
 
 export default chatService;

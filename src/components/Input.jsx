@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-export default function Input({ onSend }) {
+const Input = ({ onSend }) => {
   const [text, setText] = useState("");
 
   const handleInputChange = e => {
@@ -9,8 +9,10 @@ export default function Input({ onSend }) {
 
   const handleSend = e => {
     e.preventDefault();
-    onSend(text);
-    setText("");
+    if(text && text.length) {
+      onSend(text);
+      setText("");
+    }
   };
 
   return (
@@ -41,3 +43,5 @@ export default function Input({ onSend }) {
     </div>
   );
 }
+
+export default Input; 
